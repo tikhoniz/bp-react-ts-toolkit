@@ -27,13 +27,11 @@ const StripeCheckout = ({ order }: any) => {
 		await $api
 			.post(`/stripe/create-checkout-session`, {
 				order,
-				user: user,
+				user,
 			})
 			.then((res) => {
-				if (res.data.url) {
-					console.log("res", res);
-
-					window.location.href = res.data.url;
+				if (res.data) {
+					window.location.href = res.data;
 				}
 			})
 			.catch((err) => console.log("Error", err.message));
