@@ -192,10 +192,6 @@ class UserService {
 	}
 
 	async refresh(refreshToken: string) {
-		if (!refreshToken) {
-			throw ApiError.UnathorizedError();
-		}
-
 		const userData: any = tokenService.validateRefreshToken(refreshToken);
 
 		const tokenFromDB = await tokenService.findToken(refreshToken);

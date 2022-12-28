@@ -146,9 +146,13 @@ class UserController {
 			// достаем рефреш токен из запроса
 			const { refreshToken } = req.cookies;
 
+			if (!refreshToken || refreshToken === "undefined") {
+				return res.json();
+			}
+
 			const userData = await userService.refresh(refreshToken);
 
-			res.cookie("refreshToken", userData.refreshToken, {
+			res.cookie("refreshToken", userData?.refreshToken, {
 				maxAge: 30 * 24 * 60 * 60 * 1000,
 				httpOnly: true,
 			}); //30d

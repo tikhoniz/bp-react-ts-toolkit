@@ -74,11 +74,11 @@ class MailService {
 							</table>`,
 			})
 			.then(() => {
-				console.log("Activation Email was sent");
+				//console.log("Activation Email was sent");
 			})
 			.catch((error) => {
 				//res.status(500).json({ message: error.message });
-				console.log(error);
+				//console.log(error);
 				return;
 			});
 	}
@@ -97,11 +97,11 @@ class MailService {
 								</div>`,
 			})
 			.then(() => {
-				console.log("Registration Email was sent");
+				//console.log("Registration Email was sent");
 			})
 			.catch((error) => {
 				//res.status(500).json({ message: error.message });
-				console.log(error);
+				//console.log(error);
 				return;
 			});
 	}
@@ -184,11 +184,11 @@ class MailService {
 			</table>`,
 			})
 			.then(() => {
-				console.log("Reset password Email was sent");
+				//console.log("Reset password Email was sent");
 			})
 			.catch((error) => {
 				//res.status(500).json({ message: error.message });
-				console.log(error);
+				//console.log(error);
 				return;
 			});
 	}
@@ -268,11 +268,11 @@ class MailService {
 			</table>`,
 			})
 			.then(() => {
-				console.log("Order paid email was sent");
+				//console.log("Order paid email was sent");
 			})
 			.catch((error) => {
 				//res.status(500).json({ message: error.message });
-				console.log(error);
+				//console.log(error);
 				return;
 			});
 	}
