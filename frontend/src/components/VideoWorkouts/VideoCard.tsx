@@ -54,8 +54,6 @@ const CoverHover = ({ className, isOpen }: any) => {
 };
 
 const VideoCard = ({ video, isOpen, openVideoHandler }: any) => {
-	console.log("video", video);
-
 	return (
 		<Card>
 			<Box sx={{ p: 2, pb: 1.5 }}>

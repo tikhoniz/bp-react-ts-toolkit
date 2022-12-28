@@ -8,6 +8,8 @@ import {
 	login,
 	logout,
 	checkAuth,
+	updateUser,
+	authSocial,
 	cancelEvent,
 	registration,
 	setNewPassword,
@@ -15,7 +17,6 @@ import {
 	registerForEvent,
 	sendConfirmationEmail,
 	sendLinkToChangePassword,
-	updateUser,
 } from "../actionCreators/userActions";
 import { isRejectedAction } from "../utils";
 
@@ -57,6 +58,12 @@ export const userSlice = createSlice({
 			state.isSent = false;
 			state.newPassword = false;
 		},
+		loading(state) {
+			state.isLoading = true;
+		},
+		loaded(state) {
+			state.isLoading = false;
+		},
 	},
 	extraReducers: (builder: ActionReducerMapBuilder<UserState>) => {
 		builder
@@ -70,6 +77,17 @@ export const userSlice = createSlice({
 				}
 			)
 			.addCase(checkAuth.pending, (state, action) => {
+				state.isLoading = true;
+			})
+			.addCase(
+				authSocial.fulfilled,
+				(state: any, action: PayloadAction<IUser>) => {
+					state.error = null;
+					state.isLoading = false;
+					state.user = action.payload;
+				}
+			)
+			.addCase(authSocial.pending, (state, action) => {
 				state.isLoading = true;
 			})
 			.addCase(

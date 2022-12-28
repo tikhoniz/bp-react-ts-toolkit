@@ -28,6 +28,32 @@ export const checkAuth = createAsyncThunk(
 		}
 	}
 );
+
+export const authSocial = createAsyncThunk(
+	"user/authSocial",
+	async ({ userObject }: any, thunkAPI) => {
+		try {
+			const response = await $api.post("/users/authSocial", {
+				userObject,
+			});
+
+			localStorage.setItem("token", response.data.accessToken);
+
+			if (response.data.user?.roles) {
+				localStorage.setItem("roles", JSON.stringify(response.data.user.roles));
+			}
+			return response.data.user;
+		} catch (error: any) {
+			return thunkAPI.rejectWithValue({
+				status: error.response?.status || 500,
+				message:
+					error.response?.data?.message ||
+					"На сервере произошла внутренняя непредвиденная ошибка",
+			});
+		}
+	}
+);
+
 export const registration = createAsyncThunk(
 	"user/registration",
 	async ({ name, email, password }: any, thunkAPI) => {

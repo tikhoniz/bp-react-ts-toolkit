@@ -1,12 +1,30 @@
 import { lazy, useState } from "react";
 // animate
 import { motion } from "framer-motion";
+// hooks
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+// store
+import { userSliceActions } from "../../../store/reducers/UserSlice";
 // material
-import { Divider, Typography } from "@mui/material";
+import {
+	Backdrop,
+	CircularProgress,
+	Divider,
+	Stack,
+	Typography,
+} from "@mui/material";
 import { styled } from "@mui/material";
+// icons
+import CloseIcon from "@mui/icons-material/Close";
 // components
 const LoginForm = lazy(() => import("./LoginForm"));
 const ToggleMode = lazy(() => import("./ToggleMode"));
+const GoogleLoginButton = lazy(
+	() => import("./SocialLoginButtons/GoogleLoginButton")
+);
+const FacebookLoginButton = lazy(
+	() => import("./SocialLoginButtons/FacebookLoginButton")
+);
 
 //-------------------------- STYLE -----------------------------
 const RootStyle = styled("div")(({ theme }) => ({
@@ -35,7 +53,12 @@ const ContentStyle = styled(motion.div)({
 });
 
 const Login = () => {
+	const dispatch = useAppDispatch();
+	const { loaded } = userSliceActions;
+	const { isLoading } = useAppSelector((state) => state.userReducer);
+
 	const [isLogin, setLogin] = useState(true);
+
 	return (
 		<>
 			<RootStyle>
@@ -63,6 +86,11 @@ const Login = () => {
 						{isLogin ? "Вход" : "Регистрация"}
 					</Typography>
 
+					<Stack spacing={2}>
+						<GoogleLoginButton isLogin={isLogin} />
+						<FacebookLoginButton isLogin={isLogin} />
+					</Stack>
+
 					<Divider
 						sx={{
 							my: 2,
@@ -83,6 +111,26 @@ const Login = () => {
 					<LoginForm isLogin={isLogin} />
 				</ContentStyle>
 			</RootStyle>
+
+			<Backdrop
+				sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+				open={isLoading}
+			>
+				<CloseIcon
+					onClick={() => dispatch(loaded())}
+					sx={{
+						height: 70,
+						width: "auto",
+						position: "absolute",
+						top: "50%",
+						left: "50%",
+						transform: "translate(-50%, -50%)",
+						zIndex: 1000,
+						cursor: "pointer",
+					}}
+				/>
+				<CircularProgress color="inherit" size={100} />
+			</Backdrop>
 		</>
 	);
 };

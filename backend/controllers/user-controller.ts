@@ -12,6 +12,10 @@ class UserController {
 		try {
 			const { userObject } = req.body;
 
+			if (!userObject.email) {
+				return next(ApiError.BadRequest("Недостаточно данных"));
+			}
+
 			const user = await userService.getUser(userObject.email);
 
 			if (user) {
@@ -50,6 +54,10 @@ class UserController {
 
 			const { name, email, password } = req.body;
 
+			if (!name || !email || !password) {
+				return next(ApiError.BadRequest("Указаны не все данные"));
+			}
+
 			const userData = await userService.registration(name, email, password);
 
 			res.cookie("refreshToken", userData.refreshToken, {
@@ -68,6 +76,10 @@ class UserController {
 	async login(req: any, res: any, next: any) {
 		try {
 			const { email, password } = req.body;
+
+			if (!email || !password) {
+				return next(ApiError.BadRequest("Указаны не все данные"));
+			}
 
 			const userData = await userService.login(email, password);
 
@@ -88,6 +100,7 @@ class UserController {
 		try {
 			const { refreshToken } = req.cookies;
 			const token = await userService.logout(refreshToken);
+
 			res.clearCookie("refreshToken");
 
 			return res.json(token);
