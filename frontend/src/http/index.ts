@@ -42,7 +42,7 @@ $api.interceptors.response.use(
 
 				return $api.request(originalRequest);
 			} catch (error) {
-				console.log("Не авторизован interceptors");
+				//console.log("Не авторизован interceptors");
 			}
 		}
 

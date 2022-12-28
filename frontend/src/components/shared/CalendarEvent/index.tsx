@@ -67,7 +67,7 @@ const CalendarEvent: FC<CalendarEventProps> = ({ event }) => {
 		const t = startTimeClass - currentTime - 60 * 60 * 1000; //время оставшееся до тренировки плюс час
 
 		if (!isExpired && t > 0 && t < MAX_TIME && isParticipant) {
-			console.log("таймер установлен на %s минут", t / 60 / 1000);
+			//console.log("таймер установлен на %s минут", t / 60 / 1000);
 			const timer = setTimeout(() => {
 				setExpired(true);
 			}, t);

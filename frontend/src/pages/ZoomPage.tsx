@@ -83,12 +83,12 @@ const ZoomPage = (): JSX.Element => {
 						//console.log("ZoomMtg.join SUCCESS", success);
 					},
 					error: (error: any) => {
-						console.log(error);
+						//console.log(error);
 					},
 				});
 			},
 			error: (error: any) => {
-				console.log(error);
+				//console.log(error);
 			},
 		});
 	}

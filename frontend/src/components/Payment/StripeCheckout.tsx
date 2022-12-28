@@ -34,7 +34,9 @@ const StripeCheckout = ({ order }: any) => {
 					window.location.href = res.data;
 				}
 			})
-			.catch((err) => console.log("Error", err.message));
+			.catch((err) => {
+				//console.log("Error", err.message);
+			});
 	};
 
 	return (

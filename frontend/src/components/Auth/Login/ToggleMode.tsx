@@ -22,10 +22,11 @@ const ToggleMode = ({ mode, changeModeHandler }: any) => {
 				{mode ? "Нет аккаунта?" : "Уже есть аккаунт?"} &nbsp;
 			</Typography>
 			<Link
+				component="button"
 				underline="none"
 				variant="subtitle1"
 				onClick={() => changeModeHandler((prev: boolean) => !prev)}
-				sx={{ cursor: "pointer", "&:hover": { textDecoration: "underline" } }}
+				sx={{ "&:hover": { textDecoration: "underline" } }}
 			>
 				{mode ? "Регистрация" : "Вход"}
 			</Link>

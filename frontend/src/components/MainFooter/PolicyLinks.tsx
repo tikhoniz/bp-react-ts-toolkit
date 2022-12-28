@@ -1,7 +1,7 @@
 import { lazy } from "react";
 // material
 import { Stack, Typography } from "@mui/material";
-import { styled, Link } from "@mui/material";
+import { Link } from "@mui/material";
 // lazy
 const PrivacyPolicy = lazy(() => import("../Policy/PrivacyPolicy"));
 
@@ -18,16 +18,6 @@ const LINKS = [
 	},
 ];
 
-const LinkStyle = styled(Link)(({ theme }) => ({
-	opacity: 0.7,
-	color: theme.palette.text.primary,
-	cursor: "pointer",
-	"&:hover": {
-		opacity: 0.9,
-		textDecoration: "none",
-	},
-}));
-
 const PolicyLinks = ({ onClickHandler }: any) => {
 	return (
 		<>
@@ -39,12 +29,21 @@ const PolicyLinks = ({ onClickHandler }: any) => {
 							{headline}
 						</Typography>
 						{children.map((link) => (
-							<LinkStyle
+							<Link
 								key={link.name}
+								component="button"
 								onClick={() => onClickHandler(link.component)}
+								sx={{
+									opacity: 0.7,
+									color: "text.primary",
+									"&:hover": {
+										opacity: 0.9,
+										textDecoration: "none",
+									},
+								}}
 							>
 								{link.name}
-							</LinkStyle>
+							</Link>
 						))}
 					</Stack>
 				);

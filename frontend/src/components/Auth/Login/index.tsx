@@ -55,7 +55,7 @@ const ContentStyle = styled(motion.div)({
 const Login = () => {
 	const dispatch = useAppDispatch();
 	const { loaded } = userSliceActions;
-	const { isLoading } = useAppSelector((state) => state.userReducer);
+	const { isLoading } = useAppSelector((state: any) => state.userReducer);
 
 	const [isLogin, setLogin] = useState(true);
 

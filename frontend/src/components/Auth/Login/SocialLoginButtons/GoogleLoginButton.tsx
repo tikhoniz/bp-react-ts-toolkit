@@ -27,7 +27,7 @@ const GoogleLoginButton = ({ isLogin }: any) => {
 				onLoginSuccess(provider, data);
 			}}
 			onReject={(err) => {
-				console.log(err);
+				//console.log(err);
 				dispatch(loaded());
 			}}
 		>

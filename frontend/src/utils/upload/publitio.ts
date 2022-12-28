@@ -30,11 +30,11 @@ export const uploadImagePublitio = async ({
 				}
 			})
 			.catch((error) => {
-				console.log(error);
+				//console.log(error);
 			});
 		return response;
 	} catch (error: any) {
-		console.log(error);
+		//console.log(error);
 	}
 };
 
@@ -51,11 +51,11 @@ export const deleteImagePublitio = async (imageId: any) => {
 				}
 			})
 			.catch((error) => {
-				console.log(error);
+				//console.log(error);
 			});
 
 		return response;
 	} catch (error: any) {
-		console.log(error);
+		//console.log(error);
 	}
 };

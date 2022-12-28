@@ -9,7 +9,7 @@ export const createEvent = createAsyncThunk(
 				...eventData,
 			});
 
-			console.log("response", response);
+			//console.log("response", response);
 
 			return response.data;
 		} catch (error: any) {

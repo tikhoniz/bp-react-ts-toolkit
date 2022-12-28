@@ -107,7 +107,7 @@ const PayPalCheckout = ({ order }: any) => {
 				onCancel={() => {}}
 				onError={(err) => {
 					navigate("/payment/error");
-					console.log(err);
+					//console.log(err);
 				}}
 			/>
 		</>
