@@ -57,19 +57,26 @@ const VideoCard = ({ video, isOpen, openVideoHandler }: any) => {
 	return (
 		<Card>
 			<Box sx={{ p: 2, pb: 1.5 }}>
-				<Typography variant="subtitle2" sx={{ pb: 1 }}>
-					{video.title}
-				</Typography>
 				<Typography
-					variant="caption"
+					variant="subtitle2"
 					sx={{
-						color: "text.disabled",
+						pb: 1,
 						textOverflow: "ellipsis",
 						overflow: "hidden",
-						WebkitLineClamp: 3,
+						whiteSpace: "nowrap",
+					}}
+				>
+					{video.title}
+				</Typography>
+
+				<Typography
+					variant="body1"
+					sx={{
 						display: "-webkit-box",
+						WebkitLineClamp: "2", // количество строк
 						WebkitBoxOrient: "vertical",
-						textDecoration: "none",
+						overflow: "hidden",
+						color: "text.disabled",
 					}}
 				>
 					{video.description}

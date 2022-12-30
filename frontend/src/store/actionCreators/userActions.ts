@@ -15,6 +15,8 @@ export const checkAuth = createAsyncThunk(
 			);
 
 			if (!response.data.user) {
+				localStorage.removeItem("token");
+				localStorage.removeItem("roles");
 				return thunkAPI.signal.aborted;
 			}
 

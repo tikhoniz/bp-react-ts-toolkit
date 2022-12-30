@@ -10,6 +10,7 @@ import {
 	Backdrop,
 	CircularProgress,
 	Divider,
+	IconButton,
 	Stack,
 	Typography,
 } from "@mui/material";
@@ -115,20 +116,28 @@ const Login = () => {
 			<Backdrop
 				sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
 				open={isLoading}
+				onClick={() => dispatch(loaded())}
 			>
-				<CloseIcon
+				<IconButton
 					onClick={() => dispatch(loaded())}
 					sx={{
-						height: 70,
-						width: "auto",
 						position: "absolute",
-						top: "50%",
-						left: "50%",
-						transform: "translate(-50%, -50%)",
+						top: "10%",
+						right: "10%",
+						color: "inherit",
 						zIndex: 1000,
 						cursor: "pointer",
 					}}
-				/>
+				>
+					<Typography variant="h6">ЗАКРЫТЬ</Typography>
+					<CloseIcon
+						sx={{
+							height: 28,
+							width: "auto",
+							ml: 1,
+						}}
+					/>
+				</IconButton>
 				<CircularProgress color="inherit" size={100} />
 			</Backdrop>
 		</>

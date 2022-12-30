@@ -117,11 +117,17 @@ const VideoWorkouts = () => {
 						position: "relative",
 						width: { xs: "100%", md: "75%" },
 						maxWidth: "1600px",
+						outline: "none",
 					}}
 				>
 					<IconButton
 						onClick={closeVideo}
-						sx={{ position: "absolute", top: -55, right: 0, p: 0 }}
+						sx={{
+							position: "absolute",
+							top: -55,
+							right: 0,
+							p: 0,
+						}}
 					>
 						<CancelPresentationIcon
 							sx={{
