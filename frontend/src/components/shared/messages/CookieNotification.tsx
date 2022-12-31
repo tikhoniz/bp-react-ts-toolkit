@@ -34,7 +34,7 @@ const CookieNotification: FC<CookieNotificationProps> = ({ clickHandler }) => {
 			initial={{ position: "fixed", bottom: -100 }}
 			animate={{
 				y: -100,
-				zIndex: 1999,
+				zIndex: 999,
 			}}
 			exit={{ y: 100 }}
 			transition={{ duration: 0.5 }}

@@ -60,10 +60,11 @@ const VideoCard = ({ video, isOpen, openVideoHandler }: any) => {
 				<Typography
 					variant="subtitle2"
 					sx={{
-						pb: 1,
-						textOverflow: "ellipsis",
+						mb: 1,
+						display: "-webkit-box",
+						WebkitLineClamp: "1", // количество строк
+						WebkitBoxOrient: "vertical",
 						overflow: "hidden",
-						whiteSpace: "nowrap",
 					}}
 				>
 					{video.title}
