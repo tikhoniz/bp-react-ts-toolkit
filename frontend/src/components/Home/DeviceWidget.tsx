@@ -17,6 +17,7 @@ const DeviceWidget = () => {
 			<Typography
 				variant="h2"
 				sx={{
+					fontWeight: "fontWeightMedium",
 					textAlign: "center",
 					pb: { xs: 3, sm: 5, md: 6, lg: 7, xl: 8 },
 				}}

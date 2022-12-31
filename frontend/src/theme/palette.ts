@@ -104,7 +104,11 @@ const COMMON = {
 const palette = {
 	...COMMON,
 	text: {
-		primary: "#3d3e3e",
+		//primary: "#3d3e3e",
+		primary: "#294661",
+		//primary: "#000e35",
+
+		//secondary: "#294661",
 		secondary: "#637381",
 		tertiary: "#637381",
 		success: "#08660D",

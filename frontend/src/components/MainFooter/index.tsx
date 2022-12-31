@@ -1,4 +1,3 @@
-import { useState } from "react";
 // material
 import { styled } from "@mui/material";
 import { Grid, Stack, Divider, Container, Typography } from "@mui/material";
@@ -8,6 +7,8 @@ import { fDateYear } from "../../utils/time";
 import SocialLinks from "./SocialLinks";
 import PolicyLinks from "./PolicyLinks";
 import ModalBasic from "../shared/ModalBasic";
+import { policySliceActions } from "../../store/reducers/PolicySlice";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 
 //------------------------- STYLE ------------------------------
 const RootStyle = styled("div")(({ theme }) => ({
@@ -19,9 +20,9 @@ const RootStyle = styled("div")(({ theme }) => ({
 // ---------------------------------------------------------------
 
 const MainFooter = () => {
-	const [component, setComponent]: any = useState(null);
-
-	const date = new Date();
+	const dispatch = useAppDispatch();
+	const { closePolicy } = policySliceActions;
+	const { policy } = useAppSelector((state: any) => state.policyReducer);
 
 	return (
 		<>
@@ -39,7 +40,7 @@ const MainFooter = () => {
 								direction={{ xs: "column", md: "row" }}
 								justifyContent="space-between"
 							>
-								<PolicyLinks onClickHandler={setComponent} />
+								<PolicyLinks />
 							</Stack>
 						</Grid>
 
@@ -76,18 +77,18 @@ const MainFooter = () => {
 						}}
 					>
 						<Typography component="p" variant="body2">
-							©{fDateYear(date)}. Все права защищены.
+							©{fDateYear(new Date())}. Все права защищены.
 						</Typography>
 					</Stack>
 				</Container>
 			</RootStyle>
 
 			<ModalBasic
-				title="ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ"
-				open={!!component}
-				onClose={() => setComponent(null)}
+				title={policy?.title}
+				open={!!policy}
+				onClose={() => dispatch(closePolicy())}
 			>
-				{component}
+				{policy?.component}
 			</ModalBasic>
 		</>
 	);

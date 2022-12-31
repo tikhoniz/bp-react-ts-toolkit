@@ -102,6 +102,7 @@ const InfoBox: FC<InfoBoxProps> = ({
 					<Grid item xs={12} lg={5}>
 						<Typography
 							variant="h2"
+							fontWeight="fontWeightMedium"
 							sx={{
 								mb: 3,
 							}}

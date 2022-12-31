@@ -4,6 +4,7 @@ import zoomReducer from "./reducers/ZoomSlice";
 import eventReducer from "./reducers/EventSlice";
 import orderReducer from "./reducers/OrderSlice";
 import messageReducer from "./reducers/MessageSlice";
+import policyReducer from "./reducers/PolicySlice";
 import youtubeVideoReducer from "./reducers/YoutubeVideoSlice";
 
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
 	zoomReducer,
 	eventReducer,
 	orderReducer,
+	policyReducer,
 	messageReducer,
 	youtubeVideoReducer,
 });
@@ -18,6 +20,10 @@ const rootReducer = combineReducers({
 export const setupStore = () => {
 	return configureStore({
 		reducer: rootReducer,
+		middleware: (getDefaultMiddleware) =>
+			getDefaultMiddleware({
+				serializableCheck: false,
+			}),
 	});
 };
 

@@ -1,5 +1,6 @@
 import { lazy, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { useCookies } from "react-cookie";
 // material
 import ThemeConfig from "./theme";
 import { styled } from "@mui/material";
@@ -11,6 +12,7 @@ import { checkAuth } from "./store/actionCreators/userActions";
 import { userSliceActions } from "./store/reducers/UserSlice";
 // components
 import Loadable from "./components/shared/Loadable";
+import { AnimatePresence } from "framer-motion";
 // lazy components
 const MainLayout = Loadable(lazy(() => import("./layouts/MainLayout")));
 const Authorized = Loadable(lazy(() => import("./components/Authorized")));
@@ -25,6 +27,9 @@ const Message = Loadable(
 );
 const ErrorMessage = Loadable(
 	lazy(() => import("./components/shared/messages/ErrorMessage"))
+);
+const CookieNotification = Loadable(
+	lazy(() => import("./components/shared/messages/CookieNotification"))
 );
 // lazy pages
 const HomePage = Loadable(lazy(() => import("./pages/HomePage")));
@@ -62,6 +67,7 @@ function App() {
 	const dispatch = useAppDispatch();
 	const { clearError, clearMessage } = userSliceActions;
 	const { error, message } = useAppSelector((state) => state.userReducer);
+	const [cookies, setCookie] = useCookies(["cookieNotification"]);
 
 	useEffect(() => {
 		dispatch(checkAuth());
@@ -74,19 +80,27 @@ function App() {
 				<ScrollToTop />
 				<MainLayout>
 					<MainStyle id="main">
-						{error && (
-							<ErrorMessage
-								data={error}
-								clickHandler={() => dispatch(clearError())}
-							/>
-						)}
+						<AnimatePresence>
+							{!cookies.cookieNotification && (
+								<CookieNotification
+									clickHandler={() => setCookie("cookieNotification", "closed")}
+								/>
+							)}
 
-						{message && (
-							<Message
-								message={message}
-								clickHandler={() => dispatch(clearMessage())}
-							/>
-						)}
+							{error && (
+								<ErrorMessage
+									data={error}
+									clickHandler={() => dispatch(clearError())}
+								/>
+							)}
+
+							{message && (
+								<Message
+									message={message}
+									clickHandler={() => dispatch(clearMessage())}
+								/>
+							)}
+						</AnimatePresence>
 						<Routes>
 							{/* public routes */}
 							<Route path="/" element={<HomePage />} />

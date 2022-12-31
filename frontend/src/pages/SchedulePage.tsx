@@ -13,6 +13,7 @@ const RootStyle = styled(Page)(({ theme }) => ({
 	minHeight: "100%",
 	paddingTop: theme.spacing(10),
 	paddingBottom: theme.spacing(10),
+	color: theme.palette.text.secondary,
 	[theme.breakpoints.up("sm")]: {
 		paddingTop: theme.spacing(15),
 		paddingBottom: theme.spacing(15),
