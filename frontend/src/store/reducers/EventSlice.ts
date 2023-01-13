@@ -11,6 +11,7 @@ import {
 	getAllEvents,
 	getUpcomingEvents,
 	getUserCompletedEvents,
+	deleteEvent,
 } from "../actionCreators/eventActions";
 import { isRejectedAction } from "../utils";
 
@@ -74,6 +75,21 @@ export const eventSlice = createSlice({
 				}
 			)
 			.addCase(updateEvent.pending, (state, action) => {
+				state.isLoading = true;
+			})
+			.addCase(
+				deleteEvent.fulfilled,
+				(state: any, action: PayloadAction<string>) => {
+					state.isLoading = false;
+					state.error = null;
+					const eventId = action.payload;
+
+					state.adminEvents = current(state).adminEvents.filter(
+						(event: IEvent) => event._id !== eventId
+					);
+				}
+			)
+			.addCase(deleteEvent.pending, (state, action) => {
 				state.isLoading = true;
 			})
 			.addCase(

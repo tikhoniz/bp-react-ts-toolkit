@@ -125,6 +125,23 @@ export const logout = createAsyncThunk("user/logout", async (_, thunkAPI) => {
 	}
 });
 // User
+export const getAllUsers = createAsyncThunk(
+	"users/getAll",
+	async (_, thunkAPI) => {
+		try {
+			const response = await $api.get(`/users/all`);
+
+			return response.data;
+		} catch (error: any) {
+			return thunkAPI.rejectWithValue({
+				status: error.response?.status || 500,
+				message:
+					error.response?.data?.message ||
+					"На сервере произошла внутренняя непредвиденная ошибка",
+			});
+		}
+	}
+);
 export const updateUser = createAsyncThunk(
 	"user/update",
 	async ({ userId, updatedUser }: any, thunkAPI) => {
@@ -164,7 +181,7 @@ export const sendLinkToChangePassword = createAsyncThunk(
 	}
 );
 export const setNewPassword = createAsyncThunk(
-	"user/newpassword",
+	"user/newPassword",
 	async ({ password, token }: any, thunkAPI) => {
 		try {
 			const response = await $api.post(`/users/password/reset/${token}`, {

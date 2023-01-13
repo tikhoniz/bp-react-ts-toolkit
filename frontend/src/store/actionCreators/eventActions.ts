@@ -39,6 +39,22 @@ export const updateEvent = createAsyncThunk(
 	}
 );
 
+export const deleteEvent = createAsyncThunk(
+	"admin/deleteEvent",
+	async (eventId: any, thunkAPI) => {
+		try {
+			const response = await $api.post(`/events/delete/${eventId}`);
+
+			return response.data;
+		} catch (error: any) {
+			return thunkAPI.rejectWithValue({
+				status: error.response?.status,
+				message: error.response?.data?.message,
+			});
+		}
+	}
+);
+
 export const getAllEvents = createAsyncThunk(
 	"admin/events",
 	async (_, thunkAPI) => {

@@ -11,6 +11,7 @@ import {
 	updateUser,
 	authSocial,
 	cancelEvent,
+	getAllUsers,
 	registration,
 	setNewPassword,
 	changeZoomMode,
@@ -115,6 +116,14 @@ export const userSlice = createSlice({
 				state.user = null;
 			})
 			.addCase(logout.pending, (state, action) => {
+				state.isLoading = true;
+			})
+			.addCase(getAllUsers.fulfilled, (state, action) => {
+				state.isLoading = true;
+				state.error = null;
+				state.users = action.payload;
+			})
+			.addCase(getAllUsers.pending, (state, action) => {
 				state.isLoading = true;
 			})
 			.addCase(updateUser.fulfilled, (state, action) => {

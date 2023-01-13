@@ -1,7 +1,6 @@
-import { Stack, styled, Typography } from "@mui/material";
+import { Button, Stack, styled, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import { FC } from "react";
-import CloseIcon from "@mui/icons-material/Close";
 import { useAppDispatch } from "../../../hooks/redux";
 import { policySliceActions } from "../../../store/reducers/PolicySlice";
 import CookiePolicy from "../../Policy/CookiePolicy";
@@ -39,10 +38,16 @@ const CookieNotification: FC<CookieNotificationProps> = ({ clickHandler }) => {
 			exit={{ y: 100 }}
 			transition={{ duration: 0.5 }}
 		>
-			<Stack direction="row" justifyContent="space-between" spacing={2}>
-				<Typography variant="subtitle1" sx={{ m: 1, textAlign: "center" }}>
-					Продолжая использовать brightspilates.com, Bы соглашаетесь на
-					использование файлов cookie. Более подробную информацию можно найти в
+			<Stack
+				direction={{ xs: "column", sm: "row" }}
+				justifyContent="space-between"
+				alignItems="center"
+				spacing={2}
+				sx={{ p: 3 }}
+			>
+				<Typography variant="subtitle1" sx={{ m: 1 }}>
+					Мы используем cookie. Продолжая использовать сайт, Вы даете свое
+					согласие на использование cookie для хранения данных. Подробнее:
 					<Typography
 						component="span"
 						variant="subtitle1"
@@ -50,24 +55,25 @@ const CookieNotification: FC<CookieNotificationProps> = ({ clickHandler }) => {
 						noWrap
 						onClick={openPolicyHandler}
 						sx={{
-							fontFamily: "fontFamilySecondary",
 							cursor: "pointer",
 							"&:hover": { textDecoration: "underline" },
 							ml: 1,
 						}}
 					>
-						Политике cookie файлов
+						Политика cookie файлов
 					</Typography>
 				</Typography>
 
-				<CloseIcon
-					sx={{
-						width: 32,
-						height: 32,
-						cursor: "pointer",
-					}}
+				<Button
+					type="button"
+					size="medium"
+					variant="contained"
 					onClick={clickHandler}
-				/>
+					color="inherit"
+					sx={{ mx: 0.5, width: { xs: "100%", sm: "auto" }, minWidth: 90 }}
+				>
+					Хорошо
+				</Button>
 			</Stack>
 		</RootStyle>
 	);

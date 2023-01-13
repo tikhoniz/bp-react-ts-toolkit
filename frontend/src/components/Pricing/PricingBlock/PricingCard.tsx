@@ -35,14 +35,18 @@ const RootStyle = styled(Card)(({ theme }: any) => ({
 	boxShadow: "none",
 	borderRadius: 16,
 	border: `2px solid ${theme.palette.primary.main}`,
-	// анимация появления border
-	transition: theme.transitions.create("all", {
-		easing: theme.transitions.easing.easeInOut,
-		duration: 560,
-	}),
-	"&:hover": {
-		boxShadow: theme.customShadows.z24,
-		transform: `translateY(-11px)`,
+
+	[theme.breakpoints.up("md")]: {
+		// анимация
+		transition: theme.transitions.create("all", {
+			easing: theme.transitions.easing.easeInOut,
+			duration: 560,
+		}),
+
+		"&:hover": {
+			boxShadow: theme.customShadows.z24,
+			transform: `translateY(-11px)`,
+		},
 	},
 }));
 

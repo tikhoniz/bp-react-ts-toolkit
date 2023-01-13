@@ -16,6 +16,9 @@ import { AnimatePresence } from "framer-motion";
 // lazy components
 const MainLayout = Loadable(lazy(() => import("./layouts/MainLayout")));
 const Authorized = Loadable(lazy(() => import("./components/Authorized")));
+const AdminAuthorized = Loadable(
+	lazy(() => import("./components/AdminAuthorized"))
+);
 const RequireAuthorization = Loadable(
 	lazy(() => import("./components/RequireAuthorization"))
 );
@@ -33,6 +36,7 @@ const CookieNotification = Loadable(
 );
 // lazy pages
 const HomePage = Loadable(lazy(() => import("./pages/HomePage")));
+const AdminPage = Loadable(lazy(() => import("./pages/AdminPage")));
 const ZoomPage = Loadable(lazy(() => import("./pages/ZoomPage")));
 const AuthPage = Loadable(lazy(() => import("./pages/AuthPage")));
 const PaymentPage = Loadable(lazy(() => import("./pages/PaymentPage")));
@@ -139,6 +143,17 @@ function App() {
 									path="/profile/settings"
 									element={<ProfileSettingPage />}
 								/>
+							</Route>
+
+							{/* admin routes */}
+							<Route
+								element={
+									<AdminAuthorized
+										allowedRoles={[process.env.REACT_APP_ADMIN]}
+									/>
+								}
+							>
+								<Route path="/admin-dashboard" element={<AdminPage />} />
 							</Route>
 
 							{/* wrong routes */}
