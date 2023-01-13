@@ -208,6 +208,19 @@ class UserController {
 		}
 	}
 
+	//* @desc  Получение всех пользователей
+	//* @route  GET /api/users/all
+	//* @access Private/Admin
+	async getUsers(req: any, res: any, next: any) {
+		try {
+			const data = await userService.getUsers();
+
+			res.json(data);
+		} catch (error) {
+			next(error);
+		}
+	}
+
 	//* @desc  Изменение данных пользователя
 	//* @route  POST /api/users/update/:id
 	//* @access Private/User

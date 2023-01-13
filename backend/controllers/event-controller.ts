@@ -37,6 +37,20 @@ class EventController {
 		}
 	}
 
+	//* @desc  Удалить событие календаря
+	//* @route  POST /api/events/delete
+	//* @access  Private/Admin
+	async delete(req: any, res: any, next: any) {
+		const eventId = req.params.id;
+		try {
+			const event = await eventService.delete(eventId);
+
+			res.json(event);
+		} catch (error) {
+			next(error);
+		}
+	}
+
 	//* @desc  Получить все события
 	//* @route  GET /api/events
 	//* @access  Private/Admin

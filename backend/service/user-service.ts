@@ -219,6 +219,12 @@ class UserService {
 		return { ...tokens, user: userDto };
 	}
 
+	async getUsers() {
+		const users = await UserModel.find({});
+
+		return users;
+	}
+
 	async getUser(email: string) {
 		const user = await UserModel.findOne({ email });
 

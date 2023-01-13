@@ -30,6 +30,11 @@ router.get("/activate/:link", userController.activate);
 router.get("/refresh", userController.refresh);
 
 //@ USER
+router.get(
+	"/all",
+	roleMiddleware([process.env.ADMIN_ROLE as string]),
+	userController.getUsers
+);
 router.post(
 	"/update/:id",
 	roleMiddleware([process.env.USER_ROLE as string]),

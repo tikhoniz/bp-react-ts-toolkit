@@ -25,6 +25,11 @@ router.post(
 	roleMiddleware([process.env.ADMIN_ROLE as string]),
 	eventController.update
 );
+router.post(
+	"/delete/:id",
+	roleMiddleware([process.env.ADMIN_ROLE as string]),
+	eventController.delete
+);
 
 router.get(
 	"/all",

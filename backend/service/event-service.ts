@@ -28,6 +28,16 @@ class EventService {
 		return updEvent;
 	}
 
+	async delete(id: string) {
+		const { deletedCount } = await EventModel.deleteOne({ _id: id });
+
+		if (!deletedCount) {
+			throw ApiError.BadRequest(`Не удалось удалить групповой класс`);
+		}
+
+		return id;
+	}
+
 	async getEvents() {
 		const events = await EventModel.find({}).sort({ start: 1 }); // отсортирует сначала ближайшие к началу;
 
