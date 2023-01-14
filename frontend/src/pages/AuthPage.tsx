@@ -8,7 +8,6 @@ const Login = lazy(() => import("../components/Auth/Login"));
 //--------------------
 const RootStyle = styled(Page)({
 	position: "relative",
-	minHeight: "100%",
 });
 //--------------------
 

@@ -14,7 +14,6 @@ const RootStyle = styled("div")(({ theme }) => ({
 	alignItems: "center",
 	flexDirection: "column",
 	justifyContent: "center",
-	//padding: theme.spacing(8, 2),
 }));
 
 // ----------------------------------------------------------------------

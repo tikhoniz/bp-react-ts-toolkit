@@ -26,34 +26,32 @@ const Message: FC<MessageProps> = ({ message, clickHandler }) => {
 	}, [clickHandler]);
 
 	return (
-		<AnimatePresence>
-			<RootStyle
-				initial={{ position: "fixed", top: -40 }}
-				animate={{
-					y: 40,
-					zIndex: 1999,
-				}}
-				exit={{ x: 400 }}
-				transition={{ duration: 0.5 }}
+		<RootStyle
+			initial={{ position: "fixed", top: -40 }}
+			animate={{
+				y: 40,
+				zIndex: 1999,
+			}}
+			exit={{ y: -40 }}
+			transition={{ duration: 0.5 }}
+		>
+			<Alert
+				severity={cancel ? "warning" : "success"}
+				variant="filled"
+				action={
+					<IconButton
+						aria-label="close"
+						color="inherit"
+						size="small"
+						onClick={clickHandler}
+					>
+						<CloseIcon fontSize="inherit" />
+					</IconButton>
+				}
 			>
-				<Alert
-					severity={cancel ? "warning" : "success"}
-					variant="filled"
-					action={
-						<IconButton
-							aria-label="close"
-							color="inherit"
-							size="small"
-							onClick={clickHandler}
-						>
-							<CloseIcon fontSize="inherit" />
-						</IconButton>
-					}
-				>
-					<Typography variant="subtitle1">{message}</Typography>
-				</Alert>
-			</RootStyle>
-		</AnimatePresence>
+				<Typography variant="subtitle1">{message}</Typography>
+			</Alert>
+		</RootStyle>
 	);
 };
 

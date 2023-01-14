@@ -30,22 +30,21 @@ const CookieNotification: FC<CookieNotificationProps> = ({ clickHandler }) => {
 
 	return (
 		<RootStyle
-			initial={{ position: "fixed", bottom: -100 }}
+			initial={{ position: "fixed", opacity: 0, zIndex: 999, bottom: 0 }}
 			animate={{
-				y: -100,
-				zIndex: 999,
+				opacity: 1,
 			}}
-			exit={{ y: 100 }}
-			transition={{ duration: 0.5 }}
+			exit={{ opacity: 0 }}
+			transition={{ duration: 0.3 }}
 		>
 			<Stack
 				direction={{ xs: "column", sm: "row" }}
 				justifyContent="space-between"
 				alignItems="center"
 				spacing={2}
-				sx={{ p: 3 }}
+				sx={{ px: 2, py: 1 }}
 			>
-				<Typography variant="subtitle1" sx={{ m: 1 }}>
+				<Typography variant="subtitle1">
 					Мы используем cookie. Продолжая использовать сайт, Вы даете свое
 					согласие на использование cookie для хранения данных. Подробнее:
 					<Typography
@@ -70,7 +69,10 @@ const CookieNotification: FC<CookieNotificationProps> = ({ clickHandler }) => {
 					variant="contained"
 					onClick={clickHandler}
 					color="inherit"
-					sx={{ mx: 0.5, width: { xs: "100%", sm: "auto" }, minWidth: 90 }}
+					sx={{
+						width: { xs: "100%", sm: "auto" },
+						minWidth: 90,
+					}}
 				>
 					Хорошо
 				</Button>

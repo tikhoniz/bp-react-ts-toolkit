@@ -87,6 +87,7 @@ const MainFooter = () => {
 				title={policy?.title}
 				open={!!policy}
 				onClose={() => dispatch(closePolicy())}
+				sx={{ p: 0 }}
 			>
 				{policy?.component}
 			</ModalBasic>

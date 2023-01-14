@@ -6,7 +6,7 @@ import SocialButton from "./SocialButton";
 
 const GoogleLoginButton = ({ isLogin }: any) => {
 	const dispatch = useAppDispatch();
-	const { loading, loaded } = userSliceActions;
+	const { setSocialAuth } = userSliceActions;
 
 	const onLoginSuccess = async (provider: any, profile: any) => {
 		const userObject = {
@@ -22,13 +22,14 @@ const GoogleLoginButton = ({ isLogin }: any) => {
 	return (
 		<LoginSocialGoogle
 			client_id={process.env.REACT_APP_GOOGLE_CLIENT_ID as string}
-			onLoginStart={() => dispatch(loading())}
+			onLoginStart={() => dispatch(setSocialAuth("google"))}
 			onResolve={({ provider, data }: IResolveParams) => {
+				dispatch(setSocialAuth(null));
 				onLoginSuccess(provider, data);
 			}}
 			onReject={(err) => {
 				//console.log(err);
-				dispatch(loaded());
+				dispatch(setSocialAuth(null));
 			}}
 		>
 			<SocialButton color="google">

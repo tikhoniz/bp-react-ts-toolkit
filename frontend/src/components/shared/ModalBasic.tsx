@@ -35,6 +35,7 @@ interface ModalBasicProps {
 	title?: string;
 	onClose: () => void;
 	children: React.ReactElement;
+	sx?: any;
 }
 
 const ModalBasic: FC<ModalBasicProps> = ({
@@ -42,6 +43,7 @@ const ModalBasic: FC<ModalBasicProps> = ({
 	title,
 	onClose,
 	children,
+	sx,
 }) => {
 	return (
 		<StyledModal
@@ -51,6 +53,7 @@ const ModalBasic: FC<ModalBasicProps> = ({
 			aria-describedby="modal-modal-description"
 			slots={{ backdrop: Backdrop }}
 			closeAfterTransition={true}
+			sx={{ ...sx }}
 		>
 			<Card
 				sx={{

@@ -30,6 +30,7 @@ interface UserState {
 	error: object | null;
 	message: string;
 	checkAuthDone: boolean;
+	socialAuth: string | null;
 }
 
 const initialState: UserState = {
@@ -41,6 +42,7 @@ const initialState: UserState = {
 	error: null,
 	message: "",
 	checkAuthDone: false,
+	socialAuth: null,
 };
 
 export const userSlice = createSlice({
@@ -59,11 +61,8 @@ export const userSlice = createSlice({
 			state.isSent = false;
 			state.newPassword = false;
 		},
-		loading(state) {
-			state.isLoading = true;
-		},
-		loaded(state) {
-			state.isLoading = false;
+		setSocialAuth(state, action) {
+			state.socialAuth = action.payload;
 		},
 	},
 	extraReducers: (builder: ActionReducerMapBuilder<UserState>) => {

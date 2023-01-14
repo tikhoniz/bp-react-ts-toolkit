@@ -8,7 +8,7 @@ import { userSliceActions } from "../../../store/reducers/UserSlice";
 // material
 import {
 	Backdrop,
-	CircularProgress,
+	Box,
 	Divider,
 	IconButton,
 	Stack,
@@ -45,9 +45,8 @@ const ContentStyle = styled(motion.div)({
 	position: "relative",
 	width: "100%",
 	margin: "auto",
-	maxWidth: 480,
+	maxWidth: 360,
 	display: "flex",
-	minHeight: "100%",
 	flexDirection: "column",
 	justifyContent: "center",
 	opacity: 0,
@@ -55,8 +54,8 @@ const ContentStyle = styled(motion.div)({
 
 const Login = () => {
 	const dispatch = useAppDispatch();
-	const { loaded } = userSliceActions;
-	const { isLoading } = useAppSelector((state: any) => state.userReducer);
+	const { setSocialAuth } = userSliceActions;
+	const { socialAuth } = useAppSelector((state: any) => state.userReducer);
 
 	const [isLogin, setLogin] = useState(true);
 
@@ -114,12 +113,16 @@ const Login = () => {
 			</RootStyle>
 
 			<Backdrop
-				sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-				open={isLoading}
-				onClick={() => dispatch(loaded())}
+				sx={{
+					color: "#fff",
+					zIndex: (theme) => theme.zIndex.drawer + 1,
+					backgroundColor: "rgba(0, 0, 0, 0.75)",
+				}}
+				open={!!socialAuth}
+				onClick={() => dispatch(setSocialAuth(null))}
 			>
 				<IconButton
-					onClick={() => dispatch(loaded())}
+					onClick={() => dispatch(setSocialAuth(null))}
 					sx={{
 						position: "absolute",
 						top: "10%",
@@ -129,7 +132,6 @@ const Login = () => {
 						cursor: "pointer",
 					}}
 				>
-					<Typography variant="h6">ЗАКРЫТЬ</Typography>
 					<CloseIcon
 						sx={{
 							height: 28,
@@ -138,7 +140,31 @@ const Login = () => {
 						}}
 					/>
 				</IconButton>
-				<CircularProgress color="inherit" size={100} />
+				<Stack alignItems="center" spacing={2}>
+					<Box
+						component="img"
+						alt="logo"
+						src={`/svg/social/${socialAuth}.svg`}
+						sx={{ width: 414, height: 144, cursor: "pointer" }}
+					/>
+					<Typography>
+						Осуществляется вход с аккаунтом{" "}
+						{socialAuth &&
+							socialAuth.replace(socialAuth[0], socialAuth[0].toUpperCase())}
+					</Typography>
+					<Typography
+						component="span"
+						variant="subtitle1"
+						noWrap
+						onClick={() => setSocialAuth(null)}
+						sx={{
+							cursor: "pointer",
+							"&:hover": { textDecoration: "underline" },
+						}}
+					>
+						Нажмите чтобы закрыть
+					</Typography>
+				</Stack>
 			</Backdrop>
 		</>
 	);

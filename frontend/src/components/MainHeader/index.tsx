@@ -23,9 +23,9 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
 		easing: theme.transitions.easing.easeInOut,
 		duration: theme.transitions.duration.shorter,
 	}),
-
 	height: APP_BAR_DESKTOP,
 }));
+
 //------------------------------
 
 const MainHeader = () => {
@@ -49,15 +49,8 @@ const MainHeader = () => {
 			<ToolbarStyle
 				disableGutters
 				sx={{
-					...(isHomePage &&
-						isOffset && {
-							bgcolor: "background.default",
-							height: { md: APP_BAR_DESKTOP },
-							boxShadow: customShadows.z8,
-						}),
-					...(!isHomePage && {
+					...(isOffset && {
 						bgcolor: "background.default",
-						height: { md: APP_BAR_DESKTOP },
 						boxShadow: customShadows.z8,
 					}),
 				}}
