@@ -24,6 +24,8 @@ const MainFooter = () => {
 	const { closePolicy } = policySliceActions;
 	const { policy } = useAppSelector((state: any) => state.policyReducer);
 
+	console.log(policy);
+
 	return (
 		<>
 			<RootStyle>

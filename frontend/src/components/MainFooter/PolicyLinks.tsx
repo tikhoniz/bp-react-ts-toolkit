@@ -1,12 +1,10 @@
-import { lazy } from "react";
 // material
 import { Stack, Typography } from "@mui/material";
 import { Link } from "@mui/material";
 import CookiePolicy from "../Policy/CookiePolicy";
+import PrivacyPolicy from "../Policy/PrivacyPolicy";
 import { useAppDispatch } from "../../hooks/redux";
 import { policySliceActions } from "../../store/reducers/PolicySlice";
-// lazy
-const PrivacyPolicy = lazy(() => import("../Policy/PrivacyPolicy"));
 
 const LINKS = [
 	{
@@ -14,12 +12,10 @@ const LINKS = [
 		children: [
 			{
 				title: "Политика конфиденциальности",
-				href: "/privacy-policy",
 				component: <PrivacyPolicy />,
 			},
 			{
 				title: "Политика файлов Cookies",
-				href: "/cookies-policy",
 				component: <CookiePolicy />,
 			},
 		],
