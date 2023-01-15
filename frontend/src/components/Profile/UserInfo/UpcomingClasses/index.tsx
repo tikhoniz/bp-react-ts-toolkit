@@ -21,23 +21,16 @@ import {
 // animation
 import { motion } from "framer-motion";
 // components
-import Loadable from "../../../shared/Loadable";
 import UpcomingClassRow from "./UpcomingClassRow";
 // lazy component
-const EmptyContent = Loadable(
-	lazy(() => import("../../../shared/EmptyContent"))
-);
-const DialogAnimate = Loadable(
-	lazy(() => import("../../../shared/DialogAnimate"))
-);
-const CalendarEvent = Loadable(
-	lazy(() => import("../../../shared/CalendarEvent"))
-);
+const EmptyContent = lazy(() => import("../../../shared/EmptyContent"));
+const DialogAnimate = lazy(() => import("../../../shared/DialogAnimate"));
+const CalendarEvent = lazy(() => import("../../../shared/CalendarEvent"));
 
 interface UpcomingClassesProps {
-	userId: string;
-	isZoom: boolean;
-	groups: string[];
+	userId: string | undefined;
+	isZoom: boolean | undefined;
+	groups: string[] | undefined;
 }
 
 const UpcomingClasses: FC<UpcomingClassesProps> = ({
@@ -82,7 +75,7 @@ const UpcomingClasses: FC<UpcomingClassesProps> = ({
 		const t =
 			getEventTime(item.end) - getEventTime(item.start) - 10 * 60 * 1000;
 
-		groups.forEach((id: string) => {
+		groups?.forEach((id: string) => {
 			if (item.id === id && getEventTime(item.start) > getCurrentTime() - t) {
 				return acc.push(item);
 			}

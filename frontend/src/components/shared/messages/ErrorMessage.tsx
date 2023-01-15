@@ -7,7 +7,7 @@ import { Alert, IconButton, Stack, styled, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 interface ErrorMessageProps {
-	data: { message: string; status: number };
+	data: any;
 	clickHandler: () => void;
 }
 
@@ -28,9 +28,9 @@ const ErrorMessage: FC<ErrorMessageProps> = ({ data, clickHandler }) => {
 
 	return (
 		<RootStyle
-			initial={{ position: "fixed", top: -40 }}
+			initial={{ position: "fixed", top: -60 }}
 			animate={{
-				y: 40,
+				y: 60,
 				zIndex: 1999,
 			}}
 			exit={{ y: -40 }}
@@ -52,7 +52,7 @@ const ErrorMessage: FC<ErrorMessageProps> = ({ data, clickHandler }) => {
 			>
 				<Stack direction="row" spacing={1} alignItems="center">
 					<Typography variant="subtitle2">ОШИБКА:</Typography>
-					<Typography variant="subtitle2">{data.message}</Typography>
+					<Typography variant="subtitle2">{data && data?.message}</Typography>
 				</Stack>
 			</Alert>
 		</RootStyle>

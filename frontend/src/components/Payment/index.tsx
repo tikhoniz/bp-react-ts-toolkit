@@ -8,11 +8,10 @@ import plans from "../../data/plans";
 
 // animate
 import { motion } from "framer-motion";
-import Loadable from "../shared/Loadable";
 
 // lazy components
-const PaymentMethods = Loadable(lazy(() => import("./PaymentMethods")));
-const PaymentSummary = Loadable(lazy(() => import("./PaymentSummary")));
+const PaymentMethods = (lazy(() => import("./PaymentMethods")));
+const PaymentSummary = (lazy(() => import("./PaymentSummary")));
 
 // ----------------------------------------------------------------------
 

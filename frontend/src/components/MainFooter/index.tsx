@@ -11,7 +11,7 @@ import { policySliceActions } from "../../store/reducers/PolicySlice";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 
 //------------------------- STYLE ------------------------------
-const RootStyle = styled("div")(({ theme }) => ({
+const RootStyle = styled("footer")(({ theme }) => ({
 	gridArea: "footer",
 	position: "relative",
 	backgroundColor: theme.palette.background.default,
@@ -23,8 +23,6 @@ const MainFooter = () => {
 	const dispatch = useAppDispatch();
 	const { closePolicy } = policySliceActions;
 	const { policy } = useAppSelector((state: any) => state.policyReducer);
-
-	console.log(policy);
 
 	return (
 		<>

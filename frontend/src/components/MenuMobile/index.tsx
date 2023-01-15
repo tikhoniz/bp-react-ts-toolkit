@@ -4,7 +4,6 @@ import { IUser } from "../../models/IUser";
 // material
 import { Box, Drawer, IconButton } from "@mui/material";
 // components
-import Loadable from "../shared/Loadable";
 
 // data
 import { menuMobile } from "../../data/menuConfig";
@@ -12,7 +11,7 @@ import { menuMobile } from "../../data/menuConfig";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 // lazy components
-const MenuMobileItem = Loadable(lazy(() => import("./MenuMobileItem")));
+const MenuMobileItem = (lazy(() => import("./MenuMobileItem")));
 
 interface MenuMobileProps {
 	pathname: string;

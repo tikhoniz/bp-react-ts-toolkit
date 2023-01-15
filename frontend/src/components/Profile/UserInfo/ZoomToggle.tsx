@@ -18,8 +18,8 @@ import {
 } from "@mui/material";
 
 interface ZoomToggleProps {
-	isZoom: boolean;
-	userId: string;
+	isZoom: boolean | undefined;
+	userId: string | undefined;
 }
 
 const ZoomToggle: FC<ZoomToggleProps> = ({ isZoom, userId }) => {

@@ -11,11 +11,10 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { getAllYoutubeVideo } from "../../store/actionCreators/youtubeVideoActions";
 //import { getAllPosts } from "../../store/actionCreators/postActions";
 import { getAllMessages } from "../../store/actionCreators/messageActions";
-import Loadable from "../shared/Loadable";
 //import Messages from "./Messages";
 // lazy components
-const Summary = Loadable(lazy(() => import("./Summary")));
-const GroupClasses = Loadable(lazy(() => import("./GroupClasses")));
+const Summary = lazy(() => import("./Summary"));
+const GroupClasses = lazy(() => import("./GroupClasses"));
 
 // ---------------------------- STYLE --------------------------
 

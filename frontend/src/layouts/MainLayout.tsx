@@ -2,11 +2,10 @@ import { FC, lazy } from "react";
 // material
 import { styled } from "@mui/material";
 // components
-import Loadable from "../components/shared/Loadable";
 import { useLocation } from "react-router-dom";
 // lazy components
-const MainFooter = Loadable(lazy(() => import("../components/MainFooter")));
-const MainHeader = Loadable(lazy(() => import("../components/MainHeader")));
+const MainFooter = lazy(() => import("../components/MainFooter"));
+const MainHeader = lazy(() => import("../components/MainHeader"));
 
 const RootStyle = styled("div")({
 	minHeight: "100vh",

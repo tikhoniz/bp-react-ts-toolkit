@@ -9,17 +9,6 @@ const Hero = lazy(() => import("../components/Home/Hero"));
 const InfoBox = lazy(() => import("../components/shared/InfoBox"));
 const DeviceWidget = lazy(() => import("../components/Home/DeviceWidget"));
 
-//import Hero from "../components/Home/Hero";
-//import DeviceWidget from "../components/Home/DeviceWidget";
-
-//import Hero from "../components/Hero";
-//import InfoBox from "../components/shared/InfoBox";
-//import Page from "../components/shared/Page";
-//import PersonIcon from "@mui/icons-material/Person";
-//import MHidden from "../components/@material-extend/MHidden";
-// lazy
-//const TutorialWidget = React.lazy(() => import("../components/TutorialWidget"));
-
 //-------------------- STYLE ----------------------
 const RootStyle = styled(Page)(({ theme }) => ({
 	position: "relative",

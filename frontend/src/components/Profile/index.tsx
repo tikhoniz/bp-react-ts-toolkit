@@ -13,16 +13,15 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material";
 // components
-import Loadable from "../shared/Loadable";
 // icons
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import HistoryIcon from "@mui/icons-material/History";
 // lazy components
-const UserInfo = Loadable(lazy(() => import("./UserInfo")));
-const UserHistory = Loadable(lazy(() => import("./UserHistory")));
-const ProfileCover = Loadable(lazy(() => import("./ProfileCover")));
-const UserQuestions = Loadable(lazy(() => import("./UserQuestions")));
+const UserInfo = (lazy(() => import("./UserInfo")));
+const UserHistory = (lazy(() => import("./UserHistory")));
+const ProfileCover = (lazy(() => import("./ProfileCover")));
+const UserQuestions = (lazy(() => import("./UserQuestions")));
 
 const SIZE_ICON = "medium";
 

@@ -1,14 +1,18 @@
 import React, { FC } from "react";
 // material
 import { Grid, Container } from "@mui/material";
+import { IEvent } from "../../../models/IEvent";
+import { IUser } from "../../../models/IUser";
+import { IMessage } from "../../../models/IMessage";
+import { IYoutubeVideo } from "../../../models/IYoutubeVideo";
 // components
 //import TotalUsers from "./TotalUsers";
 
 interface SummaryProps {
-	events: [object];
-	users: [object];
-	messages: [object];
-	videos: [object];
+	events: IEvent[];
+	users: IUser[];
+	messages: IMessage[];
+	videos: IYoutubeVideo[];
 }
 
 const Summary: FC<SummaryProps> = ({ events, users, messages, videos }) => {

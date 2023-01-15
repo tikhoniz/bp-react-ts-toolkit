@@ -13,28 +13,16 @@ import { userSliceActions } from "./store/reducers/UserSlice";
 // components
 import Loadable from "./components/shared/Loadable";
 import { AnimatePresence } from "framer-motion";
-// lazy components
-const MainLayout = Loadable(lazy(() => import("./layouts/MainLayout")));
-const Authorized = Loadable(lazy(() => import("./components/Authorized")));
-const AdminAuthorized = Loadable(
-	lazy(() => import("./components/AdminAuthorized"))
-);
-const RequireAuthorization = Loadable(
-	lazy(() => import("./components/RequireAuthorization"))
-);
-const ScrollToTop = Loadable(
-	lazy(() => import("./components/shared/ScrollToTop"))
-);
-const Message = Loadable(
-	lazy(() => import("./components/shared/messages/Message"))
-);
-const ErrorMessage = Loadable(
-	lazy(() => import("./components/shared/messages/ErrorMessage"))
-);
-const CookieNotification = Loadable(
-	lazy(() => import("./components/shared/messages/CookieNotification"))
-);
+
+import Authorized from "./components/Authorized";
+import ScrollToTop from "./components/shared/ScrollToTop";
+import AdminAuthorized from "./components/AdminAuthorized";
+import Message from "./components/shared/messages/Message";
+import ErrorMessage from "./components/shared/messages/ErrorMessage";
+import RequireAuthorization from "./components/RequireAuthorization";
+import CookieNotification from "./components/shared/messages/CookieNotification";
 // lazy pages
+const MainLayout = Loadable(lazy(() => import("./layouts/MainLayout")));
 const HomePage = Loadable(lazy(() => import("./pages/HomePage")));
 const AdminPage = Loadable(lazy(() => import("./pages/AdminPage")));
 const ZoomPage = Loadable(lazy(() => import("./pages/ZoomPage")));
@@ -87,12 +75,14 @@ function App() {
 						<AnimatePresence>
 							{!cookies.cookieNotification && (
 								<CookieNotification
+									key="notification"
 									clickHandler={() => setCookie("cookieNotification", "closed")}
 								/>
 							)}
 
 							{error && (
 								<ErrorMessage
+									key="error"
 									data={error}
 									clickHandler={() => dispatch(clearError())}
 								/>
@@ -100,6 +90,7 @@ function App() {
 
 							{message && (
 								<Message
+									key="message"
 									message={message}
 									clickHandler={() => dispatch(clearMessage())}
 								/>
@@ -149,7 +140,7 @@ function App() {
 							<Route
 								element={
 									<AdminAuthorized
-										allowedRoles={[process.env.REACT_APP_ADMIN]}
+										allowedRoles={[process.env.REACT_APP_ADMIN as string]}
 									/>
 								}
 							>

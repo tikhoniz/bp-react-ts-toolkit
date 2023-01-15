@@ -5,11 +5,10 @@ import { Divider, Typography, Stack } from "@mui/material";
 import { fCurrency } from "../../utils/formatNumber";
 // components
 import Label from "../shared/Label";
-import Loadable from "../shared/Loadable";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 // lazy components
-const PayPalCheckout = Loadable(lazy(() => import("./PayPalCheckout")));
-const StripeCheckout = Loadable(lazy(() => import("./StripeCheckout")));
+const PayPalCheckout = (lazy(() => import("./PayPalCheckout")));
+const StripeCheckout = (lazy(() => import("./StripeCheckout")));
 
 const CARD_HEIGHT = "395px";
 // ----------------------------------------------------------------------

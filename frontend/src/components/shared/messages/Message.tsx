@@ -1,5 +1,5 @@
 import { Alert, IconButton, styled, Typography } from "@mui/material";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { FC, useEffect } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 

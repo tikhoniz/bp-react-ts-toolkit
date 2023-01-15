@@ -4,11 +4,10 @@ import { IUser } from "../../models/IUser";
 // material
 import { Stack } from "@mui/material";
 // components
-import Loadable from "../shared/Loadable";
 // config
 import { menuDesktop } from "../../data/menuConfig";
 // lazy components
-const MenuDesktopItem = Loadable(lazy(() => import("./MenuDesktopItem")));
+const MenuDesktopItem = (lazy(() => import("./MenuDesktopItem")));
 
 interface MenuDesktopProps {
 	user: IUser | null;

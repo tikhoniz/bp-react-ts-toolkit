@@ -7,15 +7,13 @@ import { useAppDispatch } from "../hooks/redux";
 import { getAllYoutubeVideo } from "../store/actionCreators/youtubeVideoActions";
 // components
 import Page from "../components/shared/Page";
-import Loadable from "../components/shared/Loadable";
 // lazy components
-const VideoWorkouts = Loadable(
-	lazy(() => import("../components/VideoWorkouts"))
-);
+//const VideoWorkouts = lazy(() => import("../components/VideoWorkouts"));
+import VideoWorkouts from "../components/VideoWorkouts";
 
 //--------------------
 const RootStyle = styled(Page)(({ theme }) => ({
-	minHeight: "100%",
+	minHeight: "100vh",
 	paddingTop: theme.spacing(15),
 	paddingBottom: theme.spacing(15),
 }));

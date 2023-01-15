@@ -4,15 +4,14 @@ import { useParams } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 // components
 import Page from "../components/shared/Page";
-import Loadable from "../components/shared/Loadable";
 import LoadableImage from "../components/shared/LoadableImage";
 // data
 import { coaches } from "../data/coaches";
 // lazy pages
-const CoachAbout = Loadable(
+const CoachAbout = (
 	lazy(() => import("../components/CoachInfo/CoachAbout"))
 );
-const CoachAvatar = Loadable(
+const CoachAvatar = (
 	lazy(() => import("../components/CoachInfo/CoachAvatar"))
 );
 

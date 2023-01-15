@@ -2,15 +2,14 @@ import { FC, lazy } from "react";
 // material
 import { Box, Grid, Stack, useMediaQuery, useTheme } from "@mui/material";
 // components
-import Loadable from "../../shared/Loadable";
 // animate
 import { motion } from "framer-motion";
 import { useAppSelector } from "../../../hooks/redux";
 // lazy components
-const ZoomToggle = Loadable(lazy(() => import("./ZoomToggle")));
-const ProfileAbout = Loadable(lazy(() => import("./ProfileAbout")));
-const UpcomingClasses = Loadable(lazy(() => import("./UpcomingClasses")));
-const ProfileClassesSummary = Loadable(lazy(() => import("./ProfileSummary")));
+const ZoomToggle = lazy(() => import("./ZoomToggle"));
+const ProfileAbout = lazy(() => import("./ProfileAbout"));
+const UpcomingClasses = lazy(() => import("./UpcomingClasses"));
+const ProfileClassesSummary = lazy(() => import("./ProfileSummary"));
 
 const UserInfo: FC = (): JSX.Element => {
 	const theme = useTheme();

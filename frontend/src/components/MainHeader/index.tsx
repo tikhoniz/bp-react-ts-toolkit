@@ -8,12 +8,11 @@ import { customShadows } from "../../theme/shadows";
 // hooks
 import { useAppSelector } from "../../hooks/redux";
 // components
-import Loadable from "../shared/Loadable";
 import MHidden from "../@material-extend/MHidden";
 // lazy components
-const AccountPopover = Loadable(lazy(() => import("../AccountPopover")));
-const MenuDesktop = Loadable(lazy(() => import("../MenuDesktop")));
-const MenuMobile = Loadable(lazy(() => import("../MenuMobile")));
+const AccountPopover = lazy(() => import("../AccountPopover"));
+const MenuDesktop = lazy(() => import("../MenuDesktop"));
+const MenuMobile = lazy(() => import("../MenuMobile"));
 
 const APP_BAR_DESKTOP = "72px";
 

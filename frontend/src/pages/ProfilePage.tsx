@@ -7,9 +7,8 @@ import { styled } from "@mui/material/styles";
 import { getUpcomingEvents } from "../store/actionCreators/eventActions";
 // components
 import Page from "../components/shared/Page";
-import Loadable from "../components/shared/Loadable";
 // lazy components
-const Profile = Loadable(lazy(() => import("../components/Profile")));
+const Profile = (lazy(() => import("../components/Profile")));
 
 //-------------------- STYLE ----------------------
 const RootStyle = styled(Page)(({ theme }) => ({

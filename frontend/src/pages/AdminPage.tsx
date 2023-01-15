@@ -8,9 +8,8 @@ import { getAllMessages } from "../store/actionCreators/messageActions";
 import { getAllYoutubeVideo } from "../store/actionCreators/youtubeVideoActions";
 // components
 import Page from "../components/shared/Page";
-import Loadable from "../components/shared/Loadable";
 // lazy component
-const AdminDashboard = Loadable(
+const AdminDashboard = (
 	lazy(() => import("../components/AdminDashboard"))
 );
 

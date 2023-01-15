@@ -5,10 +5,9 @@ import { Grid } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { getUserMessages } from "../../../store/actionCreators/messageActions";
 // components
-import Loadable from "../../shared/Loadable";
 // lazy components
-const QuestionList = Loadable(lazy(() => import("./QuestionList")));
-const QuestionForm = Loadable(lazy(() => import("./QuestionForm")));
+const QuestionList = (lazy(() => import("./QuestionList")));
+const QuestionForm = (lazy(() => import("./QuestionForm")));
 
 const UserQuestions = () => {
 	const dispatch = useAppDispatch();

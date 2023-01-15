@@ -12,8 +12,8 @@ const TypographyStyle = styled(Typography)(({ theme }: any) => ({
 // ----------------------------
 
 interface ProfileSummaryProps {
-	qtyGroups: string;
-	qtyPersonals: string;
+	qtyGroups: number | undefined;
+	qtyPersonals: number | undefined;
 }
 
 const ProfileSummary: FC<ProfileSummaryProps> = ({

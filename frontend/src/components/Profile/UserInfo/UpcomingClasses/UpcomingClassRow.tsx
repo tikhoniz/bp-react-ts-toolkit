@@ -22,14 +22,9 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 // animation
 import { motion } from "framer-motion";
 // components
-import Loadable from "../../../shared/Loadable";
 // lazy components
-const JoinButton = Loadable(
-	lazy(() => import("../../../shared/buttons/JoinButton"))
-);
-const ActionButton = Loadable(
-	lazy(() => import("../../../shared/buttons/ActionButton"))
-);
+const JoinButton = lazy(() => import("../../../shared/buttons/JoinButton"));
+const ActionButton = lazy(() => import("../../../shared/buttons/ActionButton"));
 
 //--------------------------- CONSTANTS ------------------------------------------
 const MAX_TIME = 24 * 60 * 60 * 1000;

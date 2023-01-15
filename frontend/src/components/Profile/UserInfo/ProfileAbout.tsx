@@ -26,7 +26,7 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 
 interface ProfileAboutProps {
-	user: IUser;
+	user: IUser | null;
 }
 
 const ProfileAbout: FC<ProfileAboutProps> = ({ user }): JSX.Element => {
@@ -43,7 +43,7 @@ const ProfileAbout: FC<ProfileAboutProps> = ({ user }): JSX.Element => {
 		phoneNumber,
 		activationLink,
 		emailVerified,
-	} = user;
+	} = user || {};
 
 	const sendConfirmHandler = async () => {
 		setSubmitting(true);
@@ -57,11 +57,11 @@ const ProfileAbout: FC<ProfileAboutProps> = ({ user }): JSX.Element => {
 
 			<Stack spacing={2} sx={{ p: 3, pt: 1, position: "relative" }}>
 				<Typography variant="body2">
-					{about.length < 50 ? (
+					{about && about.length < 50 ? (
 						about
 					) : (
 						<>
-							{showMore ? about : `${about.substring(0, 50)} ...`}
+							{showMore ? about : `${about?.substring(0, 50)} ...`}
 							<IconButton
 								aria-label="show"
 								color="primary"
