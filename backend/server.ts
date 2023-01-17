@@ -25,7 +25,15 @@ connectDB();
 const app = express();
 
 // CORS Headers => Required for cross-origin/ cross-server communication
-app.use(cors({ credentials: true, origin: process.env.CLIENT_URL }));
+//app.use(cors({ credentials: true, origin: true })); // all requests
+const url = process.env.CLIENT_URL as string;
+app.use(
+	cors({
+		credentials: true,
+		origin: [url],
+	})
+);
+
 app.use(
 	"/api/webhooks",
 	bodyParser.raw({ type: "application/json" }),

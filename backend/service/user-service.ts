@@ -1,4 +1,4 @@
-import uuid from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
 // error
@@ -53,11 +53,11 @@ class UserService {
 	}
 
 	async sendConfirmationEmail(email: any) {
-		const activationLink = uuid.v4();
+		const activationLink = uuidv4();
 
 		mailService.sendActivationMail(
 			email,
-			`${process.env.API_URL}/api/users/activate/${activationLink}`
+			`${process.env.CLIENT_URL}/api/users/activate/${activationLink}`
 		);
 
 		const user: any = await UserModel.findOneAndUpdate(
@@ -162,12 +162,12 @@ class UserService {
 			last_name: user.last_name,
 			email: user.email,
 			email_verified: true,
-			password: uuid.v4(),
+			password: uuidv4(),
 			roles: [userRole?.key],
 			provider: user.provider,
 		});
 
-		//mailService.sendRegistrationMail(newUser);
+		mailService.sendRegistrationMail(newUser);
 
 		// убирает часть информации о пользователе
 		const userDto = new UserDto(newUser);

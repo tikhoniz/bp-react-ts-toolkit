@@ -30,7 +30,7 @@ const CookieNotification: FC<CookieNotificationProps> = ({ clickHandler }) => {
 
 	return (
 		<RootStyle
-			initial={{ position: "fixed", opacity: 0, zIndex: 999, bottom: 0 }}
+			initial={{ position: "fixed", opacity: 0, zIndex: 99, bottom: 0 }}
 			animate={{
 				opacity: 1,
 			}}

@@ -22,20 +22,19 @@ import ErrorMessage from "./components/shared/messages/ErrorMessage";
 import RequireAuthorization from "./components/RequireAuthorization";
 import CookieNotification from "./components/shared/messages/CookieNotification";
 // lazy pages
-const MainLayout = Loadable(lazy(() => import("./layouts/MainLayout")));
 const HomePage = Loadable(lazy(() => import("./pages/HomePage")));
-const AdminPage = Loadable(lazy(() => import("./pages/AdminPage")));
 const ZoomPage = Loadable(lazy(() => import("./pages/ZoomPage")));
 const AuthPage = Loadable(lazy(() => import("./pages/AuthPage")));
+const VideoPage = Loadable(lazy(() => import("./pages/VideoPage")));
+const AdminPage = Loadable(lazy(() => import("./pages/AdminPage")));
+const MainLayout = Loadable(lazy(() => import("./layouts/MainLayout")));
 const PaymentPage = Loadable(lazy(() => import("./pages/PaymentPage")));
 const ProfilePage = Loadable(lazy(() => import("./pages/ProfilePage")));
 const PricingPage = Loadable(lazy(() => import("./pages/PricingPage")));
 const SchedulePage = Loadable(lazy(() => import("./pages/SchedulePage")));
 const NewPasswordPage = Loadable(lazy(() => import("./pages/NewPasswordPage")));
 const SingleCoachPage = Loadable(lazy(() => import("./pages/SingleCoachPage")));
-
 const PageNotFound = Loadable(lazy(() => import("./pages/404")));
-
 const VideoWorkoutsPage = Loadable(
 	lazy(() => import("./pages/VideoWorkoutsPage"))
 );
@@ -103,6 +102,7 @@ function App() {
 							<Route path="/schedule" element={<SchedulePage />} />
 							<Route path="/coaches/:id" element={<SingleCoachPage />} />
 							<Route path="/workout-video" element={<VideoWorkoutsPage />} />
+							<Route path="/workout-video/:id" element={<VideoPage />} />
 
 							{/*auth routes*/}
 							<Route element={<Authorized />}>

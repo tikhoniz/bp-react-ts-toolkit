@@ -7,7 +7,7 @@ export const shootFireworks = () => {
 		startVelocity: 30,
 		spread: 360,
 		ticks: 60,
-		zIndex: 1999,
+		zIndex: 199,
 	};
 
 	function randomInRange(min: number, max: number) {

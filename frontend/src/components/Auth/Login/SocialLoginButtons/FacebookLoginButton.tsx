@@ -12,7 +12,6 @@ const FacebookLoginButton = ({ isLogin }: any) => {
 		const userObject = {
 			email: profile.email,
 			name: profile.given_name,
-			last_name: profile.family_name,
 			provider: provider,
 		};
 

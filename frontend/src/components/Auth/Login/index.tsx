@@ -128,7 +128,7 @@ const Login = () => {
 						top: "10%",
 						right: "10%",
 						color: "inherit",
-						zIndex: 1000,
+						zIndex: 399,
 						cursor: "pointer",
 					}}
 				>
