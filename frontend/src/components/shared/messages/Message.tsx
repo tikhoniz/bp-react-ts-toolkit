@@ -30,7 +30,7 @@ const Message: FC<MessageProps> = ({ message, clickHandler }) => {
 			initial={{ position: "fixed", top: -40 }}
 			animate={{
 				y: 40,
-				zIndex: 999,
+				zIndex: 1999,
 			}}
 			exit={{ y: -40 }}
 			transition={{ duration: 0.5 }}

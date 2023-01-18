@@ -83,7 +83,7 @@ const VideoCard = ({ video, isLinkDisabled = false }: any) => {
 			</Box>
 
 			<NavLink
-				to={`/workout-video/${video._id}`}
+				to={`/workout-video/${video.youtubeUrl}`}
 				target="_blank"
 				aria-label="video"
 				onClick={isLinkDisabled ? (event) => event.preventDefault() : () => {}}

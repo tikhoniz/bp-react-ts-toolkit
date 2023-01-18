@@ -102,7 +102,7 @@ function App() {
 							<Route path="/schedule" element={<SchedulePage />} />
 							<Route path="/coaches/:id" element={<SingleCoachPage />} />
 							<Route path="/workout-video" element={<VideoWorkoutsPage />} />
-							<Route path="/workout-video/:id" element={<VideoPage />} />
+							<Route path="/workout-video/:url" element={<VideoPage />} />
 
 							{/*auth routes*/}
 							<Route element={<Authorized />}>

@@ -25,9 +25,9 @@ const RootStyle = styled(Page)(({ theme }) => ({
 
 const VideoPage = (): JSX.Element => {
 	const dispatch = useAppDispatch();
-	const { id } = useParams();
+	const { url } = useParams();
 	const { videoList } = useAppSelector((state) => state.youtubeVideoReducer);
-	const video = videoList.find((it) => it._id === id);
+	const video = videoList.find((it) => it.youtubeUrl === url);
 
 	useEffect(() => {
 		dispatch(getAllYoutubeVideo());
@@ -35,7 +35,7 @@ const VideoPage = (): JSX.Element => {
 	}, []);
 	return (
 		<RootStyle title={`${video ? video.title : ""} | Bright's Pilates`}>
-			{video && <Video video={video} videoList={videoList} />}
+			{video && <Video url={video.youtubeUrl} videoList={videoList} />}
 		</RootStyle>
 	);
 };

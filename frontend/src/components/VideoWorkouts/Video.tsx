@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import ReactPlayer from "react-player";
+import ReactPlayer from "react-player/lazy";
 import styled from "@emotion/styled";
 import { Box, Container, Grid } from "@mui/material";
 import VideoCard from "./VideoCard";
@@ -31,12 +31,12 @@ const StyledReactPlayer = styled(
 	top: 0;
 `;
 
-const Video = ({ video, videoList }: any) => {
+const Video = ({ url, videoList }: any) => {
 	const navigate = useNavigate();
 	const reactPlayerRef = useRef(null);
 
-	const onChangeVideoHandler = (videoId: any) => {
-		navigate(`/workout-video/${videoId}`, { replace: true });
+	const onChangeVideoHandler = (url: string) => {
+		navigate(`/workout-video/${url}`, { replace: true });
 	};
 
 	return (
@@ -50,10 +50,14 @@ const Video = ({ video, videoList }: any) => {
 							height="100%"
 							ref={reactPlayerRef}
 							controls
-							url={`https://youtu.be/${video?.youtubeUrl}`}
+							url={`https://youtu.be/${url}`}
 							config={{
 								youtube: {
-									playerVars: { origin: "https://www.youtube.com" },
+									playerVars: {
+										origin: window.location.origin,
+										//origin: "https://www.youtube.com/",
+										playsinline: 1,
+									},
 								},
 							}}
 						/>
@@ -63,7 +67,7 @@ const Video = ({ video, videoList }: any) => {
 					{videoList.map((video: any) => (
 						<Box
 							key={video._id}
-							onClick={() => onChangeVideoHandler(video._id)}
+							onClick={() => onChangeVideoHandler(video.youtubeUrl)}
 						>
 							<VideoCard video={video} isLinkDisabled />
 						</Box>

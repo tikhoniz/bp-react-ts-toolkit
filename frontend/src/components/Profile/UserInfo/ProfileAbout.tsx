@@ -146,9 +146,9 @@ const ProfileAbout: FC<ProfileAboutProps> = ({ user }): JSX.Element => {
 
 						{activationLink && !emailVerified && (
 							<Alert severity="success">
-								<AlertTitle>Ссылка отправлена</AlertTitle>
-								на <strong>{userEmail}</strong> отправлено письмо с ссылкой для
-								подтверждения адреса электронной почты
+								<AlertTitle></AlertTitle>
+								На Вашу электронную почту отправлено письмо с ссылкой для
+								подтверждения
 							</Alert>
 						)}
 					</Box>

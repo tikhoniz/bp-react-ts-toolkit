@@ -31,7 +31,7 @@ const ErrorMessage: FC<ErrorMessageProps> = ({ data, clickHandler }) => {
 			initial={{ position: "fixed", top: -60 }}
 			animate={{
 				y: 60,
-				zIndex: 999,
+				zIndex: 1999,
 			}}
 			exit={{ y: -40 }}
 			transition={{ duration: 0.35 }}
